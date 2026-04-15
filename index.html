@@ -866,7 +866,7 @@
             Applying for · Frontend Engineer (Next.js / High Ownership / System UI)
           </div>
           <h1 class="hero-title">Oluwatobi Abayomi</h1>
-          <p class="hero-subtitle">Frontend Engineer · Full-Stack Developer · 3 YOE</p>
+          <p class="hero-subtitle">Frontend Engineer · Full-Stack Developer · 5 YOE (3 years continuous professional experience)</p>
         </div>
 
         <!-- HOME LOWER -->
@@ -893,7 +893,7 @@
                 <div class="home-group-card">
                   <h3 class="home-group-title">
                     <span class="icon-check" style="margin-right:0.5rem"></span>
-                    That's not me, here's what I bring
+                    That is not me. Here is what I bring
                   </h3>
                   <ul class="home-group-list">
                     <li>I define requirements when specs are fuzzy</li>
@@ -922,7 +922,7 @@
             <div class="home-divider-text">
               <p class="home-gap-text">
                 <span>If this is the kind of ownership you're looking for,<br></span>
-                <span>keep reading, this gets more specific.</span>
+                <span>keep reading, it gets more specific.</span>
               </p>
             </div>
 
@@ -931,9 +931,9 @@
               <h2 class="home-open-title">Profile</h2>
               <div class="card radial-panel-card profile-card">
                 <p class="profile-text">
-                  Frontend Engineer with 3 years of experience building data-intensive dashboards, enterprise admin systems, and SaaS applications using React, TypeScript, Next.js, Node.js, and modern UI engineering practices. I focus on reusable architecture, data-heavy interfaces, and performant component systems. I've led teams of 3-5, defined requirements from scratch, and delivered production-ready features end-to-end in fast-paced startup environments where ownership is required.
+                  Frontend Engineer with 5 years of frontend experience, including 3 years of continuous professional delivery across data-intensive dashboards, enterprise admin systems, and SaaS applications using React, TypeScript, Next.js, Node.js, and modern UI engineering practices. I focus on reusable architecture, data-heavy interfaces, and performant component systems. I've led teams of 3-5, defined requirements from scratch, and delivered production-ready features end-to-end in fast-paced startup environments where ownership is required.
                   <br><br>
-                  I use AI aggressively to bootstrap fast, then apply hands-on engineering instinct and attention to detail to iterate toward production quality. I do not just build what is asked, I ask why, define success clearly, and deliver.
+                  I use AI to scaffold fast, then apply hands-on engineering instinct and attention to detail to iterate toward production quality. I do not just build what is asked, I ask why, define success clearly, and deliver.
                 </p>
                 <div class="profile-highlights">
                   <span class="tag">Next.js App Router</span>
@@ -969,7 +969,7 @@
             <div class="section-wrap mt-2" id="casestudy">
               <h2 class="home-open-title">Case Study: ConferenceCycle</h2>
               <p class="text-center" style="color:var(--color-text-muted); margin-bottom: 2rem; max-width: 680px; margin-left:auto; margin-right:auto;">
-                A multi-tenant conference platform built on Next.js. Each conference lives on its own subdomain, while organizers manage everything from a single account. Here is how I designed the architecture.
+                A multi-tenant conference platform built at Intenttech with Next.js. Each conference lives on its own subdomain, while organizers manage everything from a single account. Here is how I designed the architecture.
               </p>
 
               <!-- Architecture breakdown in vacancy-card style -->
@@ -984,7 +984,7 @@
                 <div class="card radial-panel-card vacancy-card">
                   <h3 class="vacancy-title">Server vs. Client Boundary</h3>
                   <p class="vacancy-description">Layouts, structure, and data fetching stay on the server. Client components are scoped to interactive pieces only, such as forms, modals, and charts. This keeps bundles lean and pages easy to reason about.</p>
-                  <span class="vacancy-action">Performance</span>
+                  <span class="vacancy-action">Rendering Architecture</span>
                 </div>
 
                 <div class="card radial-panel-card vacancy-card">
@@ -1002,28 +1002,37 @@
                 <div class="card radial-panel-card vacancy-card">
                   <h3 class="vacancy-title">Dynamic Theming per Tenant</h3>
                   <p class="vacancy-description">Conference branding (colors, fonts) is fetched from the API and injected through React context. The same components render correctly for each tenant with no duplicated theme files.</p>
-                  <span class="vacancy-action">Theming</span>
+                  <span class="vacancy-action">Theming Architecture</span>
                 </div>
 
                 <div class="card radial-panel-card vacancy-card">
                   <h3 class="vacancy-title">SEO from the Ground Up</h3>
                   <p class="vacancy-description">Each public conference page and the marketing site have isolated metadata via Next.js Metadata API. Public routes get SSG/ISR; dynamic organizer pages are server-rendered. Search engines see the right content every time.</p>
-                  <span class="vacancy-action">SEO</span>
+                  <span class="vacancy-action">SEO Architecture</span>
                 </div>
 
               </div>
+
+              <p class="text-center" style="color:var(--text-muted); margin: 0.25rem 0 1rem; font-size: 0.9rem;">Execution detail</p>
 
               <!-- Hardest problem + AI approach -->
               <div class="grid grid-2" style="gap: 1rem; margin-top: 1rem;">
                 <div class="about-benefit-card radial-panel">
                   <div class="case-item-label">Hardest problem</div>
                   <h3 class="about-benefit-title">Routing ambiguity + tenant-aware SEO on conference subdomains</h3>
-                  <p class="about-benefit-text">The hardest part was making one Next.js codebase behave like many conference sites, where conferenceName.domain.com always loads the right conference identity, data, and SEO info. I solved this with middleware and host-based routing, then wired the resolved tenant into the conference data flow through context and query keys. This kept pages reusable and handled conference identity once at the edge/request layer, instead of scattering tenant checks across components.<br><br>I also implemented tenant-level conference SEO: per-conference metadata generation on [conference] routes (title + description from conferenceName, titleDescription, conferenceDetails), social preview metadata from conference assets, conference-level URL maps from active conference records, and metadata freshness rules when conference details change (dates, name, banner, status).</p>
+                  <p class="about-benefit-text">The hardest part was making one Next.js codebase behave like many conference sites, where rasengan-conf.conferencecycle.com always loads the right conference identity, data, and SEO info instead of the main app at conferencecycle.com.</p>
+                  <p class="about-benefit-text" style="margin-top:0.75rem;">I solved this with middleware and host-based routing, then wired the resolved tenant into conference data flow through context and query keys. This kept pages reusable and handled conference identity once at the edge/request layer.</p>
+                  <ul class="about-benefit-text" style="margin-top:0.75rem; padding-left: 1.1rem;">
+                    <li>Per-conference metadata generation on conference routes (title + description from conferenceName, titleDescription, conferenceDetails)</li>
+                    <li>Conference social preview metadata from conference assets</li>
+                    <li>Conference URL maps from active conference records</li>
+                    <li>Metadata freshness rules when conference details change (dates, name, banner, status)</li>
+                  </ul>
                 </div>
                 <div class="about-benefit-card radial-panel">
                   <div class="case-item-label">How I work: speed + quality</div>
                   <h3 class="about-benefit-title">AI to bootstrap, engineering instinct to ship</h3>
-                  <p class="about-benefit-text">I use AI aggressively to scaffold repetitive structure, including boilerplate, type definitions, and query hooks. That frees my attention for the decisions that matter most: data boundaries, rendering strategy, and performance trade-offs. I can go from a fuzzy requirement to a production-ready feature quickly, then iterate from real feedback instead of assumptions.</p>
+                  <p class="about-benefit-text">I use AI to scaffold repetitive structure, including boilerplate, type definitions, and query hooks. That frees my attention for the decisions that matter most: data boundaries, rendering strategy, and performance trade-offs. I move from fuzzy requirements to production-ready features quickly, then validate with profiling, type-safe checks, and production QA before release.</p>
                 </div>
               </div>
             </div>
@@ -1057,7 +1066,7 @@
                   </div>
                   <ul class="exp-bullets">
                     <li>Built a full email-marketing analytics platform: 7 dashboards and 12+ complex data visualizations (Recharts, D3, react-simple-maps)</li>
-                    <li>Engineered a component system + theming architecture with strict TypeScript for fast page development</li>
+                    <li>Reduced feature delivery time by defining reusable component and theming architecture with strict TypeScript</li>
                     <li>Delivered mobile-first responsive layouts and pixel-perfect Figma translations</li>
                   </ul>
                 </div>
@@ -1071,7 +1080,7 @@
                     <span class="exp-date">Mar 2025 – Present · Lagos, Nigeria</span>
                   </div>
                   <ul class="exp-bullets">
-                    <li>Handled frontend architecture and requirements translation for major government portals</li>
+                    <li>Reduced feature delivery time by defining reusable frontend architecture patterns and translating requirements for major government portals</li>
                     <li>Refactored TIN Verification Portal for performance, UX and high-load reliability</li>
                     <li>Developed a Fleet Management SaaS (React, Node.js, MSSQL, Docker, Entra ID) covering vehicle management, trip tracking, and reporting</li>
                     <li>Led a 5-dev team delivering an enterprise admin portal with MSAL/Entra authentication, Microsoft chatbot integration, architecture decisions, and code review</li>
@@ -1089,6 +1098,7 @@
                   <ul class="exp-bullets">
                     <li>Shipped features across 2 production apps using React & Next.js</li>
                     <li>Integrated APIs with TanStack Query for reliable server-state synchronization</li>
+                    <li>Built ConferenceCycle, a multi-tenant conference platform with subdomain routing, tenant context isolation, and tenant-level SEO architecture</li>
                   </ul>
                 </div>
 
@@ -1117,9 +1127,10 @@
                   </div>
                   <ul class="exp-bullets">
                     <li>Rapidly onboarded into an existing codebase, built Figma designs and implemented key features including REST API integrations and Zustand state management for the FishDey marketplace MVP</li>
-                    <li>And many more...</li>
                   </ul>
                 </div>
+
+                <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">And many more experiences not listed here.</p>
 
               </div>
             </div>
@@ -1147,7 +1158,7 @@
                 </div>
                 <div class="about-benefit-card radial-panel">
                   <h3 class="about-benefit-title">Ship first, iterate with data</h3>
-                  <p class="about-benefit-text">I know the value of getting something in front of users fast. I've shipped MVPs that unlocked product-market feedback within days, then iterated based on what actually mattered.</p>
+                  <p class="about-benefit-text">I know the value of getting something in front of users fast. I've shipped MVPs that unlocked customer & product-market feedback within days, then iterated based on what actually mattered.</p>
                 </div>
                 <div class="about-benefit-card radial-panel">
                   <h3 class="about-benefit-title">System thinking, not just component thinking</h3>
