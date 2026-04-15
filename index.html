@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en" data-preferred-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oluwatobi Abayomi - Frontend Engineer Application</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+  :root {
+    --bg-main: radial-gradient(1200px 600px at 50% -200px, #1e2b4a 0%, #05060a 60%);
+    --bg-glass: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+    --border-glass: rgba(255,255,255,.12);
+    --text-main: #e9ecf1;
+    --text-muted: #9aa3b2;
+    --accent: #2f8cff;
+    --radius: 16px;
+    --font-suisse: "DM Sans", sans-serif;
+    --color-text-primary: #f1f1f2;
+    --color-text-muted: #c4c5c7;
+    --color-border: #2b2e3d;
+    --color-accent: #0d64cf;
+    --space-1: .5rem;
+    --space-2: .75rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+    --space-6: 3rem;
+    --motion-fast: .16s;
+    --motion-med: .26s;
+    --motion-slow: .42s;
+    --ease-standard: cubic-bezier(.2,.8,.2,1);
+    --radius-full: 100px;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-suisse);
+    background: #0e0d1a;
+    color: var(--text-main);
+    overflow-x: hidden;
+    scrollbar-color: #2b2e3d #0e0d1a;
+    scrollbar-width: thin;
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  /* ── APP WRAPPER ── */
+  .app {
+    min-height: 100vh;
+    padding-top: clamp(.5rem, 1.5vw, 1rem);
+    display: flex;
+    flex-direction: column;
+    background-image: url('background.webp');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% auto;
+  }
+
+  /* ── HEADER ── */
+  header {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto var(--space-3);
+    padding: 0 clamp(1rem, 3vw, 1.5rem);
+    min-height: 4rem;
+    border-radius: 1.25rem;
+    background: linear-gradient(180deg, #0c0e188c, #080a128c);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-suisse);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    position: sticky;
+    top: 0.5rem;
+    z-index: 100;
+  }
+
+  .logo-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-suisse);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0;
+  }
+
+  .logo-diamond {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: #171728;
+    padding: 2px;
+    height: 2.25rem;
+    border-radius: .875rem;
+  }
+
+  .header-nav a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: .875rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: .75rem;
+    transition: background var(--motion-fast) var(--ease-standard), color var(--motion-fast) var(--ease-standard);
+    cursor: pointer;
+  }
+
+  .header-nav a:hover,
+  .header-nav a.active {
+    background: #2b2e3d;
+    color: var(--color-text-primary);
+  }
+
+  .cta-blue-button {
+    background: var(--color-accent);
+    min-width: 9rem;
+    min-height: 2.25rem;
+    padding: .5rem .875rem;
+    border-radius: .625rem;
+    border: 1px solid var(--color-accent);
+    font-family: var(--font-suisse);
+    font-weight: 500;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard), box-shadow var(--motion-fast) var(--ease-standard);
+  }
+
+  .cta-blue-button:hover {
+    background: #1a74df;
+    box-shadow: 0 0 20px rgba(13, 100, 207, 0.4);
+    transform: translateY(-1px);
+  }
+
+  /* ── HERO ── */
+  .hero-intro {
+    text-align: center;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 1.5rem) clamp(2rem, 5vw, 4rem);
+    animation: fade-up var(--motion-slow) var(--ease-standard);
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(13, 100, 207, 0.15);
+    border: 1px solid rgba(13, 100, 207, 0.3);
+    border-radius: var(--radius-full);
+    padding: 0.25rem 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #7cb3eb;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-label-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #7cb3eb;
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .hero-title {
+    height: auto;
+    font-family: var(--font-suisse);
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 52px);
+    line-height: clamp(36px, 6vw, 64px);
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: var(--color-text-primary);
+    opacity: 1;
+    margin: 0 auto;
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-text-muted);
+    margin-top: 0.75rem;
+    font-weight: 400;
+  }
+
+  /* ── MAIN SHELL ── */
+  .home-shell {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: clamp(2.5rem, 4vw, 5rem) clamp(1rem, 3vw, 1.5rem) 0;
+    animation: fade-up var(--motion-slow) var(--ease-standard);
+  }
+
+  .home-lower {
+    background: linear-gradient(180deg, #171728, #0e0d1a 8.89%);
+    width: calc(100% + 40px);
+    margin: clamp(1rem, 3vw, 1.5rem) -20px 0;
+    padding: clamp(2rem, 5vw, 2.5rem) 20px 0;
+    box-sizing: border-box;
+    border-radius: 1.5rem 1.5rem 0 0;
+  }
+
+  .home-lower-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card-bg, var(--bg-glass));
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius);
+    padding: clamp(1rem, 3vw, 1.5rem);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .radial-panel-card {
+    --card-bg: linear-gradient(0deg, rgba(23,23,40,.6), rgba(23,23,40,.6)), radial-gradient(80.05% 147.57% at 50% -11.11%, rgba(0,0,0,0) 70.73%, rgba(78,130,183,.28) 89.8%);
+  }
+
+  .radial-panel {
+    background: linear-gradient(0deg, #17172899, #17172899), radial-gradient(80.05% 147.57% at 50% -11.11%, #0000 70.73%, #4e82b747 89.8%);
+  }
+
+  /* ── BEFORE/SCROLL FURTHER ── */
+  .home-before-card {
+    padding-bottom: clamp(1.25rem, 3vw, 1.75rem);
+    border-radius: 1.5rem;
+    margin-top: 60px;
+  }
+
+  .home-section-title {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr !important; }
+    .header-nav { display: none; }
+  }
+
+  .home-group-card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 1rem;
+    padding: 1.25rem;
+  }
+
+  .home-group-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .home-group-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .home-group-list {
+    list-style: none;
+  }
+
+  .home-group-list li {
+    font-family: var(--font-suisse);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    padding: 5px 0;
+    margin-bottom: 10px;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .home-group-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-text-muted);
+  }
+
+  /* ── DIVIDER ── */
+  .page-divider {
+    width: 100%;
+    margin: clamp(2rem, 4vw, 3rem) 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .page-divider svg, .page-divider img {
+    width: 100%;
+    max-width: 1254px;
+    height: 33px;
+  }
+
+  .home-divider-text {
+    text-align: center;
+    margin: 1rem 0 2rem;
+  }
+
+  .home-gap-text {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--color-text-primary);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* ── OPEN POSITIONS / SECTIONS ── */
+  .home-open-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .vacancy-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 13.75rem;
+    transition: transform var(--motion-med) var(--ease-standard), border-color var(--motion-med) var(--ease-standard);
+  }
+
+  .vacancy-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(78,130,183,.4);
+  }
+
+  .vacancy-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.35;
+  }
+
+  .vacancy-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .vacancy-action {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 0.625rem;
+    color: var(--color-text-primary);
+    font-family: var(--font-suisse);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-align: left;
+    transition: background var(--motion-fast) var(--ease-standard);
+    width: fit-content;
+  }
+
+  .vacancy-action:hover {
+    background: rgba(255,255,255,.1);
+  }
+
+  /* ── BENEFIT CARDS (about-style) ── */
+  .about-benefit-card {
+    position: relative;
+    border-radius: 20px;
+    padding: 24px 28px;
+    border: 1px solid rgba(255,255,255,.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform var(--motion-med) var(--ease-standard), border-color var(--motion-med) var(--ease-standard);
+  }
+
+  .about-benefit-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(78,130,183,.25);
+  }
+
+  .about-benefit-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .about-benefit-text {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── HOW WE WORK TABLE STYLE ── */
+  .work-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .work-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .work-row:last-child { border-bottom: none; }
+
+  .work-label {
+    min-width: 240px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .work-desc {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .work-row { flex-direction: column; gap: 0.5rem; }
+    .work-label { min-width: unset; }
+  }
+
+  /* ── ACTIONS ── */
+  .vacancies-actions {
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .vacancies-more {
+    min-width: 9.5rem;
+    min-height: 3.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: #f1f1f2;
+    font-family: var(--font-suisse);
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    cursor: pointer;
+    transition: background var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard);
+  }
+
+  .vacancies-more:hover {
+    background: rgba(255,255,255,.05);
+    border-color: rgba(255,255,255,.2);
+    transform: translateY(-1px);
+  }
+
+  .home-think-actions {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+
+  .home-think-button {
+    min-width: 11.5rem;
+    min-height: 2.75rem;
+    padding: .75rem 1.125rem;
+    border-radius: .75rem;
+    font-size: 1rem;
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-wrap {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  /* ── PROFILE / SUMMARY ── */
+  .profile-card {
+    border-radius: 1.5rem;
+    padding: 2rem 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .profile-text {
+    font-size: 1.0625rem;
+    color: var(--text-main);
+    line-height: 1.75;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .profile-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+  .tag {
+    background: rgba(47, 140, 255, 0.12);
+    border: 1px solid rgba(47, 140, 255, 0.25);
+    border-radius: var(--radius-full);
+    padding: 0.25rem 0.875rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #7cb3eb;
+  }
+
+  /* ── CASE STUDY ── */
+  .case-study-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 700px) {
+    .case-study-grid { grid-template-columns: 1fr; }
+  }
+
+  .case-item {
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .case-item-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .case-item-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .case-item-text {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── INLINE CHECK/CROSS ICONS ── */
+  .icon-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1.5px solid rgba(34, 197, 94, 0.4);
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+  }
+
+  .icon-check::after {
+    content: '✓';
+    font-size: 11px;
+    color: #22c55e;
+    font-weight: 700;
+  }
+
+  .icon-x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.12);
+    border: 1.5px solid rgba(239, 68, 68, 0.35);
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+  }
+
+  .icon-x::after {
+    content: '✕';
+    font-size: 10px;
+    color: #ef4444;
+    font-weight: 700;
+  }
+
+  .check-row, .x-row {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  .check-row:last-child,
+  .x-row:last-child { border-bottom: none; }
+
+  /* ── FOOTER ── */
+  footer {
+    width: 100%;
+    margin: 24px 0 0;
+    padding: clamp(1.25rem, 4vw, 1.5rem) clamp(1rem, 3vw, 1.5rem);
+    min-height: 12rem;
+    background: #171728;
+    border-top: 1px solid #2b2e3d;
+    text-align: center;
+    font-size: .8125rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-gap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  .footer-bottom {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  /* ── TIMELINE/EXPERIENCE ── */
+  .exp-item {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
+    border-left: 2px solid rgba(47,140,255,.3);
+    padding-left: 1.5rem;
+    transition: border-color var(--motion-med) var(--ease-standard);
+  }
+
+  .exp-item:hover { border-left-color: var(--accent); }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .exp-role {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .exp-company {
+    font-size: 0.9375rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 0.15rem;
+  }
+
+  .exp-date {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    background: rgba(255,255,255,.05);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-full);
+  }
+
+  .exp-bullets {
+    list-style: none;
+    margin-top: 0.5rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    padding: 0.3rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(47,140,255,.6);
+  }
+
+  /* ── MATCH SECTION ── */
+  .match-statement {
+    text-align: center;
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--color-text-primary);
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+  }
+
+  /* Spacing util */
+  .mt-2 { margin-top: 2rem; }
+  .mb-2 { margin-bottom: 2rem; }
+  .mt-3 { margin-top: 3rem; }
+  .mb-3 { margin-bottom: 3rem; }
+  .text-center { text-align: center; }
+  .text-accent { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="app-content">
+
+    <!-- ── HEADER ── -->
+    <header>
+      <button class="logo-button" type="button">
+        <span class="logo-diamond">
+          <svg class="logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2L25 14L14 26L3 14L14 2Z" stroke="#f1f1f2" stroke-width="1.5" fill="none"/>
+            <path d="M14 7L21 14L14 21L7 14L14 7Z" stroke="#2f8cff" stroke-width="1.5" fill="none"/>
+          </svg>
+          OBITO
+        </span>
+      </button>
+      <nav class="header-nav">
+        <a class="active" href="#hero">Overview</a>
+        <a href="#scroll-further">Why Me</a>
+        <a href="#casestudy">Case Study</a>
+        <a href="#experience">Experience</a>
+      </nav>
+      <div>
+        <a href="https://calendly.com/dannyobito05" target="_blank" class="cta-blue-button">Book a call</a>
+      </div>
+    </header>
+
+    <!-- ── MAIN ── -->
+    <main>
+      <div class="home-shell">
+
+        <!-- HERO -->
+        <div class="hero-intro" id="hero">
+          <div class="hero-label">
+            <span class="hero-label-dot"></span>
+            Applying for · Frontend Engineer (Next.js / High Ownership / System UI)
+          </div>
+          <h1 class="hero-title">Oluwatobi Abayomi</h1>
+          <p class="hero-subtitle">Frontend Engineer · Full-Stack Developer · 3 YOE</p>
+        </div>
+
+        <!-- HOME LOWER -->
+        <div class="home-lower">
+          <div class="home-lower-inner">
+
+            <!-- ── YOU SHOULD SCROLL FURTHER ── -->
+            <div class="card radial-panel-card home-before-card" id="scroll-further">
+              <h2 class="home-section-title">You should scroll further</h2>
+              <div class="grid grid-2 home-groups-grid">
+                <div class="home-group-card">
+                  <h3 class="home-group-title">
+                    <span class="icon-x" style="margin-right:0.5rem"></span>
+                    You're looking for someone who
+                  </h3>
+                  <ul class="home-group-list">
+                    <li>Waits for full clarity before moving</li>
+                    <li>Needs hand-holding on architecture</li>
+                    <li>Only follows Figma without thinking</li>
+                    <li>Optimizes pixels instead of outcomes</li>
+                    <li>Prefers long architectural debates over shipping</li>
+                  </ul>
+                </div>
+                <div class="home-group-card">
+                  <h3 class="home-group-title">
+                    <span class="icon-check" style="margin-right:0.5rem"></span>
+                    That's not me, here's what I bring
+                  </h3>
+                  <ul class="home-group-list">
+                    <li>I define requirements when specs are fuzzy</li>
+                    <li>I own architecture decisions end-to-end</li>
+                    <li>I ship first, validate fast, iterate intelligently</li>
+                    <li>I've led dev teams in startup environments</li>
+                    <li>I solve the business problem, not just the ticket</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- DIVIDER -->
+            <div class="page-divider">
+              <svg width="1254" height="33" viewBox="0 0 1254 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="1254" height="33" fill="url(#div1)"/>
+                <defs>
+                  <radialGradient id="div1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(627 16.5) rotate(-180) scale(603.732 15.8877)">
+                    <stop stop-color="#7CB3EB"/>
+                    <stop offset="1" stop-color="#143E81" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <div class="home-divider-text">
+              <p class="home-gap-text">
+                <span>If this is the kind of ownership you're looking for,<br></span>
+                <span>keep reading, this gets more specific.</span>
+              </p>
+            </div>
+
+            <!-- ── PROFILE SUMMARY ── -->
+            <div class="section-wrap mt-2" id="summary">
+              <h2 class="home-open-title">Profile</h2>
+              <div class="card radial-panel-card profile-card">
+                <p class="profile-text">
+                  Frontend Engineer with 3 years of experience building data-intensive dashboards, enterprise admin systems, and SaaS applications using React, TypeScript, Next.js, Node.js, and modern UI engineering practices. I focus on reusable architecture, data-heavy interfaces, and performant component systems. I've led teams of 3-5, defined requirements from scratch, and delivered production-ready features end-to-end in fast-paced startup environments where ownership is required.
+                  <br><br>
+                  I use AI aggressively to bootstrap fast, then apply hands-on engineering instinct and attention to detail to iterate toward production quality. I do not just build what is asked, I ask why, define success clearly, and deliver.
+                </p>
+                <div class="profile-highlights">
+                  <span class="tag">Next.js App Router</span>
+                  <span class="tag">React + TypeScript</span>
+                  <span class="tag">Tailwind CSS</span>
+                  <span class="tag">SSR / SSG / ISR</span>
+                  <span class="tag">SEO & Core Web Vitals</span>
+                  <span class="tag">TanStack Query</span>
+                  <span class="tag">Recharts / D3</span>
+                  <span class="tag">Node.js + Express</span>
+                  <span class="tag">PostgreSQL</span>
+                  <span class="tag">Azure / Docker</span>
+                  <span class="tag">AI-accelerated dev</span>
+                  <span class="tag">Team lead</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- DIVIDER -->
+            <div class="page-divider">
+              <svg width="1254" height="33" viewBox="0 0 1254 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="1254" height="33" fill="url(#div2)"/>
+                <defs>
+                  <radialGradient id="div2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(627 16.5) rotate(-180) scale(603.732 15.8877)">
+                    <stop stop-color="#7CB3EB"/>
+                    <stop offset="1" stop-color="#143E81" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <!-- ── CASE STUDY ── -->
+            <div class="section-wrap mt-2" id="casestudy">
+              <h2 class="home-open-title">Case Study: ConferenceCycle</h2>
+              <p class="text-center" style="color:var(--color-text-muted); margin-bottom: 2rem; max-width: 680px; margin-left:auto; margin-right:auto;">
+                A multi-tenant conference platform built on Next.js. Each conference lives on its own subdomain, while organizers manage everything from a single account. Here is how I designed the architecture.
+              </p>
+
+              <!-- Architecture breakdown in vacancy-card style -->
+              <div class="grid grid-3 vacancies-grid" style="margin-bottom: 1.5rem;">
+
+                <div class="card radial-panel-card vacancy-card">
+                  <h3 class="vacancy-title">Multi-Tenancy at the Router Level</h3>
+                  <p class="vacancy-description">Built subdomain-aware routing so each conference gets its own isolated data and UI context without duplicating the app. Main app vs tenant detection happens at the edge, not inside pages.</p>
+                  <span class="vacancy-action">System Design</span>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <h3 class="vacancy-title">Server vs. Client Boundary</h3>
+                  <p class="vacancy-description">Layouts, structure, and data fetching stay on the server. Client components are scoped to interactive pieces only, such as forms, modals, and charts. This keeps bundles lean and pages easy to reason about.</p>
+                  <span class="vacancy-action">Performance</span>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <h3 class="vacancy-title">Reusable UI System</h3>
+                  <p class="vacancy-description">Buttons, inputs, tables, and layouts come from one source of truth. Tailwind utility classes stay aligned with consistent design tokens. No one-off pages drift from the system over time.</p>
+                  <span class="vacancy-action">Component Architecture</span>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <h3 class="vacancy-title">Data Layer with TanStack Query</h3>
+                  <p class="vacancy-description">Custom hooks per domain (auth, conference context, attendee lists) keep pages from becoming monoliths. Server state is cached and invalidated predictably, with no waterfall requests.</p>
+                  <span class="vacancy-action">Data Architecture</span>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <h3 class="vacancy-title">Dynamic Theming per Tenant</h3>
+                  <p class="vacancy-description">Conference branding (colors, fonts) is fetched from the API and injected through React context. The same components render correctly for each tenant with no duplicated theme files.</p>
+                  <span class="vacancy-action">Theming</span>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <h3 class="vacancy-title">SEO from the Ground Up</h3>
+                  <p class="vacancy-description">Each public conference page and the marketing site have isolated metadata via Next.js Metadata API. Public routes get SSG/ISR; dynamic organizer pages are server-rendered. Search engines see the right content every time.</p>
+                  <span class="vacancy-action">SEO</span>
+                </div>
+
+              </div>
+
+              <!-- Hardest problem + AI approach -->
+              <div class="grid grid-2" style="gap: 1rem; margin-top: 1rem;">
+                <div class="about-benefit-card radial-panel">
+                  <div class="case-item-label">Hardest problem</div>
+                  <h3 class="about-benefit-title">Routing ambiguity + tenant-aware SEO on conference subdomains</h3>
+                  <p class="about-benefit-text">The hardest part was making one Next.js codebase behave like many conference sites, where conferenceName.domain.com always loads the right conference identity, data, and SEO info. I solved this with middleware and host-based routing, then wired the resolved tenant into the conference data flow through context and query keys. This kept pages reusable and handled conference identity once at the edge/request layer, instead of scattering tenant checks across components.<br><br>I also implemented tenant-level conference SEO: per-conference metadata generation on [conference] routes (title + description from conferenceName, titleDescription, conferenceDetails), social preview metadata from conference assets, conference-level URL maps from active conference records, and metadata freshness rules when conference details change (dates, name, banner, status).</p>
+                </div>
+                <div class="about-benefit-card radial-panel">
+                  <div class="case-item-label">How I work: speed + quality</div>
+                  <h3 class="about-benefit-title">AI to bootstrap, engineering instinct to ship</h3>
+                  <p class="about-benefit-text">I use AI aggressively to scaffold repetitive structure, including boilerplate, type definitions, and query hooks. That frees my attention for the decisions that matter most: data boundaries, rendering strategy, and performance trade-offs. I can go from a fuzzy requirement to a production-ready feature quickly, then iterate from real feedback instead of assumptions.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- DIVIDER -->
+            <div class="page-divider">
+              <svg width="1254" height="33" viewBox="0 0 1254 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="1254" height="33" fill="url(#div3)"/>
+                <defs>
+                  <radialGradient id="div3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(627 16.5) rotate(-180) scale(603.732 15.8877)">
+                    <stop stop-color="#7CB3EB"/>
+                    <stop offset="1" stop-color="#143E81" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <!-- ── EXPERIENCE ── -->
+            <div class="section-wrap mt-2" id="experience">
+              <h2 class="home-open-title">Experience</h2>
+
+              <div class="card radial-panel-card" style="border-radius:1.5rem; padding: 1.5rem 2rem;">
+
+                <div class="exp-item">
+                  <div class="exp-header">
+                    <div>
+                      <div class="exp-role">Frontend Engineer (Freelance)</div>
+                      <div class="exp-company">Geniex</div>
+                    </div>
+                    <span class="exp-date">Oct 2025 – Present · Remote, India</span>
+                  </div>
+                  <ul class="exp-bullets">
+                    <li>Built a full email-marketing analytics platform: 7 dashboards and 12+ complex data visualizations (Recharts, D3, react-simple-maps)</li>
+                    <li>Engineered a component system + theming architecture with strict TypeScript for fast page development</li>
+                    <li>Delivered mobile-first responsive layouts and pixel-perfect Figma translations</li>
+                  </ul>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-header">
+                    <div>
+                      <div class="exp-role">Frontend / Fullstack Engineer</div>
+                      <div class="exp-company">Datalytix</div>
+                    </div>
+                    <span class="exp-date">Mar 2025 – Present · Lagos, Nigeria</span>
+                  </div>
+                  <ul class="exp-bullets">
+                    <li>Handled frontend architecture and requirements translation for major government portals</li>
+                    <li>Refactored TIN Verification Portal for performance, UX and high-load reliability</li>
+                    <li>Developed a Fleet Management SaaS (React, Node.js, MSSQL, Docker, Entra ID) covering vehicle management, trip tracking, and reporting</li>
+                    <li>Led a 5-dev team delivering an enterprise admin portal with MSAL/Entra authentication, Microsoft chatbot integration, architecture decisions, and code review</li>
+                  </ul>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-header">
+                    <div>
+                      <div class="exp-role">Frontend Developer</div>
+                      <div class="exp-company">Intenttech</div>
+                    </div>
+                    <span class="exp-date">Jan 2025 – Mar 2025 · Remote, UK</span>
+                  </div>
+                  <ul class="exp-bullets">
+                    <li>Shipped features across 2 production apps using React & Next.js</li>
+                    <li>Integrated APIs with TanStack Query for reliable server-state synchronization</li>
+                  </ul>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-header">
+                    <div>
+                      <div class="exp-role">Frontend Developer Team Lead (Contract)</div>
+                      <div class="exp-company">Makkan Innovation</div>
+                    </div>
+                    <span class="exp-date">Sep 2024 – Dec 2024 · Remote</span>
+                  </div>
+                  <ul class="exp-bullets">
+                    <li>Led a 4-developer team delivering a real-estate marketplace MVP and admin dashboard (React + TypeScript)</li>
+                    <li>Implemented standardized Git workflows and code review practices that reduced merge conflicts by 70%</li>
+                    <li>Designed the client/server state architecture and fixed major performance bottlenecks</li>
+                  </ul>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-header">
+                    <div>
+                      <div class="exp-role">Frontend Developer (Freelance)</div>
+                      <div class="exp-company">Pysis Technologies</div>
+                    </div>
+                    <span class="exp-date">Jan 2024 – May 2024 · Remote</span>
+                  </div>
+                  <ul class="exp-bullets">
+                    <li>Rapidly onboarded into an existing codebase, built Figma designs and implemented key features including REST API integrations and Zustand state management for the FishDey marketplace MVP</li>
+                    <li>And many more...</li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- DIVIDER -->
+            <div class="page-divider">
+              <svg width="1254" height="33" viewBox="0 0 1254 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="1254" height="33" fill="url(#div4)"/>
+                <defs>
+                  <radialGradient id="div4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(627 16.5) rotate(-180) scale(603.732 15.8877)">
+                    <stop stop-color="#7CB3EB"/>
+                    <stop offset="1" stop-color="#143E81" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <!-- ── WHAT YOU GET ── -->
+            <div class="section-wrap mt-2">
+              <h2 class="home-open-title">What you get with me</h2>
+              <div class="grid grid-2" style="gap: 1rem;">
+                <div class="about-benefit-card radial-panel">
+                  <h3 class="about-benefit-title">A developer who defines the problem first</h3>
+                  <p class="about-benefit-text">I've worked with fuzzy specs and incomplete requirements from day one. I ask the right questions, align on outcomes, then execute.</p>
+                </div>
+                <div class="about-benefit-card radial-panel">
+                  <h3 class="about-benefit-title">Ship first, iterate with data</h3>
+                  <p class="about-benefit-text">I know the value of getting something in front of users fast. I've shipped MVPs that unlocked product-market feedback within days, then iterated based on what actually mattered.</p>
+                </div>
+                <div class="about-benefit-card radial-panel">
+                  <h3 class="about-benefit-title">System thinking, not just component thinking</h3>
+                  <p class="about-benefit-text">Whether it's a component library, a multi-tenant routing layer, or an analytics dashboard architecture, I build systems that scale beyond the immediate ticket.</p>
+                </div>
+                <div class="about-benefit-card radial-panel">
+                  <h3 class="about-benefit-title">Real execution speed with AI leverage</h3>
+                  <p class="about-benefit-text">I use AI to eliminate the boring work and spend my engineering attention on architecture, edge cases, and performance. The result: production-quality output, faster than a typical two-person team.</p>
+                </div>
+                <div class="about-benefit-card radial-panel">
+                  <h3 class="about-benefit-title">Leadership under ambiguity</h3>
+                  <p class="about-benefit-text">I've led teams of 3-5 in startup environments. I set standards, enforce them through review, and take responsibility when things go sideways without waiting for permission.</p>
+                </div>
+                <div class="about-benefit-card radial-panel">
+                  <h3 class="about-benefit-title">SEO and performance are not afterthoughts</h3>
+                  <p class="about-benefit-text">I build with Core Web Vitals, SSR/SSG tradeoffs, and semantic structure in mind from the start. SEO at DeepSense is not something to bolt on at the end, and I have built for it before.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- FINAL CTA -->
+            <div class="home-think-actions">
+              <p style="color: var(--color-text-muted); margin-bottom: 1.5rem; font-size: 1rem;">Want to see more projects or talk through architecture decisions?</p>
+              <a href="https://calendly.com/dannyobito05" target="_blank" class="cta-blue-button home-think-button">Book a call</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+      <div class="footer-logo">
+        <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2L25 14L14 26L3 14L14 2Z" stroke="#f1f1f2" stroke-width="1.5" fill="none"/>
+          <path d="M14 7L21 14L14 21L7 14L14 7Z" stroke="#2f8cff" stroke-width="1.5" fill="none"/>
+        </svg>
+        OLUWATOBI ABAYOMI
+      </div>
+      <div class="footer-bottom">
+        <span>dannyobito05@gmail.com</span>
+        <span>·</span>
+        <span>github.com/dannyobito</span>
+        <span>·</span>
+        <span>linkedin.com/in/oluwatobi-abayomi</span>
+      </div>
+      <svg class="footer-gap" width="1254" height="33" viewBox="0 0 1254 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1254" height="33" fill="url(#div5)"/>
+        <defs>
+          <radialGradient id="div5" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(627 16.5) rotate(-180) scale(603.732 15.8877)">
+            <stop stop-color="#7CB3EB"/>
+            <stop offset="1" stop-color="#143E81" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </footer>
+
+  </div>
+</div>
+</body>
+</html>
