@@ -171,6 +171,48 @@
     transform: translateY(-1px);
   }
 
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .cta-ghost-button {
+    background: transparent;
+    min-width: auto;
+    min-height: 2.25rem;
+    padding: .5rem .875rem;
+    border-radius: .625rem;
+    border: 1px solid var(--color-border);
+    font-family: var(--font-suisse);
+    font-weight: 500;
+    font-size: .8125rem;
+    line-height: 1.25rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard), color var(--motion-fast) var(--ease-standard);
+  }
+
+  .cta-ghost-button:hover {
+    background: rgba(255,255,255,.05);
+    border-color: rgba(255,255,255,.2);
+    color: var(--color-text-primary);
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+  }
+
   /* ── HERO ── */
   .hero-intro {
     text-align: center;
@@ -430,6 +472,181 @@
 
   .vacancy-action:hover {
     background: rgba(255,255,255,.1);
+  }
+
+  .vacancy-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    height: 100%;
+  }
+
+  /* ── FEATURED PROJECTS ── */
+  .projects-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .project-relevance-note {
+    margin-bottom: 1.25rem;
+    background: rgba(13, 100, 207, 0.1);
+    border: 1px solid rgba(13, 100, 207, 0.25);
+    border-radius: 1rem;
+    padding: 0.875rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  .project-relevance-note strong {
+    color: #7cb3eb;
+    font-weight: 600;
+  }
+
+  .project-row {
+    background: linear-gradient(0deg, rgba(23,23,40,.85), rgba(23,23,40,.85));
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    transition: background var(--motion-med) var(--ease-standard), transform var(--motion-med) var(--ease-standard);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-row:hover {
+    background: rgba(43, 46, 61, 0.6);
+    transform: translateY(-2px);
+  }
+
+  .project-number {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    max-width: 640px;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-timeline {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #7cb3eb;
+    background: rgba(47, 140, 255, 0.12);
+    border: 1px solid rgba(47, 140, 255, 0.25);
+    border-radius: var(--radius-full);
+    padding: 0.2rem 0.625rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .project-tag {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .project-tag.accent {
+    color: #7cb3eb;
+    background: rgba(47, 140, 255, 0.1);
+    border-color: rgba(47, 140, 255, 0.2);
+  }
+
+  .project-link-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    transition: border-color var(--motion-fast) var(--ease-standard), color var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard);
+    margin-top: 0.25rem;
+  }
+
+  .project-row:hover .project-link-icon {
+    border-color: rgba(255,255,255,.25);
+    color: var(--color-text-primary);
+    transform: translate(2px, -2px);
+  }
+
+  .more-projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 700px) {
+    .more-projects { grid-template-columns: 1fr; }
+    .project-row { grid-template-columns: 1fr; padding: 1.25rem 1.5rem; }
+    .project-link-icon { display: none; }
+    .header-actions .cta-ghost-button { display: none; }
+  }
+
+  .project-category-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .footer-links a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--motion-fast) var(--ease-standard);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-text-primary);
   }
 
   /* ── BENEFIT CARDS (about-style) ── */
@@ -846,12 +1063,15 @@
       </button>
       <nav class="header-nav">
         <a class="active" href="#hero">Overview</a>
-        <a href="#scroll-further">Why Me</a>
+        <a href="#featured-projects">Projects</a>
+        <a href="#fast-execution">How I ship</a>
         <a href="#casestudy">Case Study</a>
         <a href="#experience">Experience</a>
       </nav>
-      <div>
-        <a href="https://calendly.com/dannyobito05" target="_blank" class="cta-blue-button">Book a call</a>
+      <div class="header-actions">
+        <a href="Oluwatobi_Abayomi_Resume.pdf" download="Oluwatobi_Abayomi_Resume.pdf" class="cta-ghost-button">Download CV</a>
+        <a href="https://github.com/dannyobito" target="_blank" rel="noopener noreferrer" class="cta-ghost-button">GitHub</a>
+        <a href="https://calendly.com/dannyobito05" target="_blank" rel="noopener noreferrer" class="cta-blue-button">Book a call</a>
       </div>
     </header>
 
@@ -863,10 +1083,11 @@
         <div class="hero-intro" id="hero">
           <div class="hero-label">
             <span class="hero-label-dot"></span>
-            Applying for · Frontend Engineer (Next.js / High Ownership / System UI)
+            Applying for · Frontend Developer (Next.js · Fast Execution)
           </div>
           <h1 class="hero-title">Oluwatobi Abayomi</h1>
           <p class="hero-subtitle">Frontend Engineer · Full-Stack Developer · 5 YOE (3 years continuous professional experience)</p>
+          <p class="hero-subtitle" style="margin-top: 0.5rem; font-size: clamp(0.875rem, 1.5vw, 1rem);">Landing pages in 1–3 days · multi-page sites in 3–5 days · Figma → production-ready UI</p>
         </div>
 
         <!-- HOME LOWER -->
@@ -948,6 +1169,255 @@
                   <span class="tag">Azure / Docker</span>
                   <span class="tag">AI-accelerated dev</span>
                   <span class="tag">Team lead</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- DIVIDER -->
+            <div class="page-divider">
+              <svg width="1254" height="33" viewBox="0 0 1254 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="1254" height="33" fill="url(#div2a)"/>
+                <defs>
+                  <radialGradient id="div2a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(627 16.5) rotate(-180) scale(603.732 15.8877)">
+                    <stop stop-color="#7CB3EB"/>
+                    <stop offset="1" stop-color="#143E81" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <!-- ── FEATURED PROJECTS ── -->
+            <div class="section-wrap mt-2" id="featured-projects">
+              <span class="section-label">Featured work</span>
+              <h2 class="home-open-title">Featured projects</h2>
+              <p class="section-sub text-center" style="margin: 0 auto 1.5rem; text-align: center;">Real projects shipped in ≤3–5 days — with live links and honest timelines.</p>
+
+              <p class="project-relevance-note"><strong>Why this matters for DeepSense:</strong> fast Figma-to-code, responsive landings, SEO-aware structure, and shipping clean production UI without overengineering.</p>
+
+              <div class="projects-stack">
+
+                <a href="https://www.nrev360.com/" target="_blank" rel="noopener noreferrer" class="project-row">
+                  <div>
+                    <div class="project-number">01 | Government landing</div>
+                    <div class="project-title">NRev360 Government Landing</div>
+                    <div class="project-meta">
+                      <span class="project-timeline">~1 day · solo</span>
+                    </div>
+                    <p class="project-desc">Government service landing page for a tax and compliance platform: structured information architecture, quick-access services, FAQs, tax resources, and responsive public-facing UX. Built and deployed solo.</p>
+                    <div class="project-tags">
+                      <span class="project-tag accent">React</span>
+                      <span class="project-tag">TypeScript</span>
+                      <span class="project-tag">Tailwind CSS</span>
+                      <span class="project-tag">Responsive UX</span>
+                      <span class="project-tag">SEO structure</span>
+                    </div>
+                  </div>
+                  <div class="project-link-icon">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 11.5l9-9M4 2.5h7.5V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </a>
+
+                <a href="https://ot-wise.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-row">
+                  <div>
+                    <div class="project-number">02 | Product landing</div>
+                    <div class="project-title">OTwise Landing</div>
+                    <div class="project-meta">
+                      <span class="project-timeline">~1 day · solo</span>
+                    </div>
+                    <p class="project-desc">Product landing page helping local authorities onboard occupational therapists and assessors for home adaptation grants. Focused on onboarding flow communication, responsive UI, and trust-focused presentation. Initial shipped version before the platform evolved further.</p>
+                    <div class="project-tags">
+                      <span class="project-tag accent">React</span>
+                      <span class="project-tag">Tailwind CSS</span>
+                      <span class="project-tag">Figma to code</span>
+                      <span class="project-tag">Responsive</span>
+                    </div>
+                  </div>
+                  <div class="project-link-icon">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 11.5l9-9M4 2.5h7.5V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </a>
+
+                <a href="https://taxidservice.jrb.gov.ng/" target="_blank" rel="noopener noreferrer" class="project-row">
+                  <div>
+                    <div class="project-number">03 | Government portal</div>
+                    <div class="project-title">Tax ID &amp; Certificate Portal</div>
+                    <div class="project-meta">
+                      <span class="project-timeline">~1.5–2 days frontend</span>
+                      <span class="project-timeline">~4 days E2E</span>
+                    </div>
+                    <p class="project-desc">Government-facing Tax ID and Tax Certificate retrieval portal built under strict delivery pressure. I handled frontend implementation, responsive layouts, flow structure, and integration work. Full end-to-end flow extended due to backend coordination and evolving requirements.</p>
+                    <div class="project-tags">
+                      <span class="project-tag accent">React</span>
+                      <span class="project-tag">TypeScript</span>
+                      <span class="project-tag">API integration</span>
+                      <span class="project-tag">High-stakes UX</span>
+                      <span class="project-tag">Production gov</span>
+                    </div>
+                  </div>
+                  <div class="project-link-icon">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 11.5l9-9M4 2.5h7.5V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </a>
+
+                <a href="https://novus-fe.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-row">
+                  <div>
+                    <div class="project-number">04 | Web3 product landing</div>
+                    <div class="project-title">Novus Web3 Landing</div>
+                    <div class="project-meta">
+                      <span class="project-timeline">~2 days · solo</span>
+                    </div>
+                    <p class="project-desc">Landing page for a Web3 product offering instructor-led courses with on-chain certificates and crypto-friendly payments. Built with Next.js from Figma with Framer Motion polish. Fast execution helped secure a nomination for funding.</p>
+                    <div class="project-tags">
+                      <span class="project-tag accent">Next.js</span>
+                      <span class="project-tag">React</span>
+                      <span class="project-tag">TypeScript</span>
+                      <span class="project-tag">Tailwind CSS</span>
+                      <span class="project-tag">Framer Motion</span>
+                      <span class="project-tag">Figma to code</span>
+                    </div>
+                  </div>
+                  <div class="project-link-icon">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 11.5l9-9M4 2.5h7.5V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </a>
+
+                <a href="https://geniex-seo-dashboard.vercel.app/seo-dashboard" target="_blank" rel="noopener noreferrer" class="project-row">
+                  <div>
+                    <div class="project-number">05 | UI-heavy analytics product</div>
+                    <div class="project-title">SEO Dashboard</div>
+                    <div class="project-meta">
+                      <span class="project-timeline">~30 hours focused</span>
+                      <span class="project-timeline">7 views · Figma fidelity</span>
+                    </div>
+                    <p class="project-desc">A multi-view SEO analytics product with near 100% Figma fidelity. KPI cards control chart context. Interactive line and bar visualizations, paginated data tables (TanStack), collapsible sidebar, mobile drawer, dark and light mode with localStorage persistence, plus auth flows. Built as a complete product with 7 real views — a heavier UI example beyond typical landing-page scope.</p>
+                    <div class="project-tags">
+                      <span class="project-tag accent">React</span>
+                      <span class="project-tag">TypeScript</span>
+                      <span class="project-tag">Recharts</span>
+                      <span class="project-tag">TanStack Table</span>
+                      <span class="project-tag">Dark / light mode</span>
+                      <span class="project-tag">Auth flows</span>
+                    </div>
+                  </div>
+                  <div class="project-link-icon">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 11.5l9-9M4 2.5h7.5V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+
+            <!-- ── MORE PROJECTS ── -->
+            <div class="section-wrap mt-2" id="more-projects">
+              <span class="section-label">More work</span>
+              <h2 class="home-open-title" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem);">More projects</h2>
+              <p class="section-sub" style="margin-bottom: 1.5rem;">Production apps, Figma-to-code builds, and dashboards.</p>
+
+              <div class="more-projects grid grid-2">
+
+                <div class="card radial-panel-card vacancy-card">
+                  <a href="https://email-marketing-dashboard-41ol.vercel.app/" target="_blank" rel="noopener noreferrer" class="vacancy-card-link">
+                    <span class="project-category-badge">Analytics · Production</span>
+                    <h3 class="vacancy-title">Email Marketing Analytics Dashboard</h3>
+                    <p class="vacancy-description">Built a full analytics platform with 7 dashboards and 12+ complex visualizations (Recharts, D3, react-simple-maps). Engineered a component system and theming architecture with strict TypeScript.</p>
+                    <span class="vacancy-action">React · TypeScript · Recharts · D3 · TanStack Query · Tailwind</span>
+                  </a>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <a href="https://taxidservice.jrb.gov.ng/" target="_blank" rel="noopener noreferrer" class="vacancy-card-link">
+                    <span class="project-category-badge">Government · Production</span>
+                    <h3 class="vacancy-title">TIN Verification Portal</h3>
+                    <p class="vacancy-description">Refactored a major government portal for performance, UX, and high-load reliability. Frontend architecture for critical government infrastructure — related live portal above.</p>
+                    <span class="vacancy-action">React · TypeScript · Performance optimization</span>
+                  </a>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <a href="http://makkanpropertylisting.ng/" target="_blank" rel="noopener noreferrer" class="vacancy-card-link">
+                    <span class="project-category-badge">Production · Marketplace</span>
+                    <h3 class="vacancy-title">Makkan Property Listings</h3>
+                    <p class="vacancy-description">A platform connecting property seekers with verified real estate agents. Led the development team and established a scalable system architecture.</p>
+                    <span class="vacancy-action">React · TypeScript · Redux Toolkit · TailwindCSS</span>
+                  </a>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <span class="project-category-badge">Enterprise · Private</span>
+                  <h3 class="vacancy-title">Fleet Management SaaS</h3>
+                  <p class="vacancy-description">Built enterprise Fleet Management SaaS to manage vehicles, drivers, trips, costs, and maintenance. Led a 5-dev team with MSAL/Entra authentication.</p>
+                  <span class="vacancy-action">React · TypeScript · Node.js · MSSQL · Docker · Entra ID</span>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <a href="https://conferencecycle.com/" target="_blank" rel="noopener noreferrer" class="vacancy-card-link">
+                    <span class="project-category-badge">Production · Multi-tenant</span>
+                    <h3 class="vacancy-title">Confris Conference Platform</h3>
+                    <p class="vacancy-description">Conference management platform for streamlined paper management, supporting owners, editors, authors, and reviewers with complex workflows.</p>
+                    <span class="vacancy-action">React · Next.js · TypeScript · TailwindCSS · TanStack Query</span>
+                  </a>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <a href="https://otwiseai.com/" target="_blank" rel="noopener noreferrer" class="vacancy-card-link">
+                    <span class="project-category-badge">Production · Platform</span>
+                    <h3 class="vacancy-title">OTwiseAI Platform</h3>
+                    <p class="vacancy-description">Production platform for local authorities to onboard trusted assessors and occupational therapists to support home adaptation for the elderly and disabled.</p>
+                    <span class="vacancy-action">React · TailwindCSS · TanStack Query · TanStack Table · TypeScript</span>
+                  </a>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <a href="https://shippex-wine.vercel.app/" target="_blank" rel="noopener noreferrer" class="vacancy-card-link">
+                    <span class="project-category-badge">Figma to code</span>
+                    <h3 class="vacancy-title">Shippex</h3>
+                    <p class="vacancy-description">React TypeScript shipping application built with Vite that provides a shipping tracking interface. Mobile and desktop responsive.</p>
+                    <span class="vacancy-action">React · Tailwind · TypeScript · Vite</span>
+                  </a>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <a href="https://the-tea.vercel.app/" target="_blank" rel="noopener noreferrer" class="vacancy-card-link">
+                    <span class="project-category-badge">Figma to code</span>
+                    <h3 class="vacancy-title">The Tea</h3>
+                    <p class="vacancy-description">Perfectly replicated design for a sign in and sign up desktop page from Figma.</p>
+                    <span class="vacancy-action">React · Tailwind · Desktop</span>
+                  </a>
+                </div>
+
+                <div class="card radial-panel-card vacancy-card">
+                  <a href="https://rent4u-nine.vercel.app/" target="_blank" rel="noopener noreferrer" class="vacancy-card-link">
+                    <span class="project-category-badge">Figma to code</span>
+                    <h3 class="vacancy-title">Rent4U</h3>
+                    <p class="vacancy-description">Beautiful, responsive React application for property rentals featuring modern UI design and seamless user experience across all devices.</p>
+                    <span class="vacancy-action">React · Tailwind · Mobile &amp; Desktop</span>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- ── HOW I SHIP FAST ── -->
+            <div class="section-wrap mt-2" id="fast-execution">
+              <span class="section-label">Fast execution</span>
+              <h2 class="home-open-title">How I ship under tight deadlines</h2>
+              <p class="section-sub text-center" style="margin: 0 auto 1.5rem; text-align: center;">What I skip, what I do first with Figma, and what actually slows delivery.</p>
+
+              <div class="grid grid-2" style="gap: 1rem;">
+                <div class="about-benefit-card radial-panel">
+                  <div class="case-item-label">Under tight deadlines</div>
+                  <h3 class="about-benefit-title">What I deliberately skip</h3>
+                  <p class="about-benefit-text">Premature abstraction, full design systems too early, unnecessary animations, speculative scalability work, unnecessary libraries, and deep handling for very low-impact edge cases. I ship a clean, responsive, production-ready experience first, then refine from real feedback.</p>
+                </div>
+                <div class="about-benefit-card radial-panel">
+                  <div class="case-item-label">First 1–2 hours with Figma</div>
+                  <h3 class="about-benefit-title">How I start</h3>
+                  <p class="about-benefit-text">Scan all pages for reusable patterns, flag risky or unclear sections early, establish typography and layout rhythm, scaffold routing and layout structure, start with the homepage, and extract reusable components once repetition is obvious. I optimize for momentum and less decision fatigue later.</p>
+                </div>
+                <div class="about-benefit-card radial-panel" style="grid-column: 1 / -1;">
+                  <div class="case-item-label">Timeline reality</div>
+                  <h3 class="about-benefit-title">What turns 2–3 days into 1–2 weeks</h3>
+                  <p class="about-benefit-text">Usually not frontend coding speed. Most delays come from unclear or changing requirements, delayed assets and copy, too many revision rounds before a first version ships, backend or API instability, overengineering simple pages, and perfecting abstractions too early. I prefer shipping a strong first version quickly, then iterating on something real.</p>
                 </div>
               </div>
             </div>
@@ -1181,8 +1651,12 @@
 
             <!-- FINAL CTA -->
             <div class="home-think-actions">
-              <p style="color: var(--color-text-muted); margin-bottom: 1.5rem; font-size: 1rem;">Want to see more projects or talk through architecture decisions?</p>
-              <a href="https://calendly.com/dannyobito05" target="_blank" class="cta-blue-button home-think-button">Book a call</a>
+              <p style="color: var(--color-text-muted); margin-bottom: 1.5rem; font-size: 1rem;">Want to see more projects or talk through fast execution on your next build?</p>
+              <div class="cta-row">
+                <a href="Oluwatobi_Abayomi_Resume.pdf" download="Oluwatobi_Abayomi_Resume.pdf" class="cta-ghost-button home-think-button">Download CV</a>
+                <a href="https://github.com/dannyobito" target="_blank" rel="noopener noreferrer" class="cta-ghost-button home-think-button">View GitHub</a>
+                <a href="https://calendly.com/dannyobito05" target="_blank" rel="noopener noreferrer" class="cta-blue-button home-think-button">Book a call</a>
+              </div>
             </div>
 
           </div>
@@ -1199,12 +1673,14 @@
         </svg>
         OLUWATOBI ABAYOMI
       </div>
-      <div class="footer-bottom">
-        <span>dannyobito05@gmail.com</span>
+      <div class="footer-bottom footer-links">
+        <a href="mailto:dannyobito05@gmail.com">dannyobito05@gmail.com</a>
         <span>·</span>
-        <span>github.com/dannyobito</span>
+        <a href="https://github.com/dannyobito" target="_blank" rel="noopener noreferrer">github.com/dannyobito</a>
         <span>·</span>
-        <span>linkedin.com/in/oluwatobi-abayomi</span>
+        <a href="https://linkedin.com/in/oluwatobi-abayomi" target="_blank" rel="noopener noreferrer">linkedin.com/in/oluwatobi-abayomi</a>
+        <span>·</span>
+        <a href="#featured-projects">Projects</a>
       </div>
       <svg class="footer-gap" width="1254" height="33" viewBox="0 0 1254 33" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="1254" height="33" fill="url(#div5)"/>
